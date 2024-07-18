@@ -1,0 +1,53 @@
+/* 모바일 스타일 (350px 이하 포함) */
+@media only screen and (max-width: 767px) {
+  .MyToDoList_container {
+    padding: 1rem;
+  }
+
+  .inputTesk {
+    width: 20rem;
+    font-size: 12px;
+  }
+
+  .addBtn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .tapStyle {
+    min-width: 60px;
+  }
+
+  .taskBtnWrap button {
+    font-size: 12px;
+    width: 2rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+/* 350px 이하의 모바일 스타일 (350px 유지) */
+@media only screen and (max-width: 349px) {
+  .MyToDoList_container {
+    padding: 1rem;
+  }
+
+  .inputTesk {
+    width: 20rem;
+    font-size: 12px;
+  }
+
+  .addBtn {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .tapStyle {
+    min-width: 60px;
+  }
+
+  .taskBtnWrap button {
+    font-size: 12px;
+    width: 4rem;
+    padding: 0.3rem 0.5rem;
+  }
+}

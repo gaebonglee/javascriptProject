@@ -1,0 +1,13 @@
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .MyToDoList_container {
+    padding: 2rem;
+  }
+
+  .inputTesk {
+    width: 25rem;
+  }
+
+  .tapStyle {
+    min-width: 80px;
+  }
+}

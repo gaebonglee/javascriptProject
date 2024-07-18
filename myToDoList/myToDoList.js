@@ -45,16 +45,16 @@ function render() {
         resultHTML += `<div class="task">
               <p class="taskDone">${list[i].taskContent}</p>
               <div class="taskBtnWrap">
-                <button onclick="completeTask('${list[i].id}')">check</button>
-                <button onclick="deleteTask('${list[i].id}')">delete</button>
+                <button onclick="completeTask('${list[i].id}')"><i class="ri-check-line"></i></button>
+                <button onclick="deleteTask('${list[i].id}')"><i class="ri-delete-bin-6-line"></i></button>
               </div>
             </div>`;
       } else {
         resultHTML += `<div class="task">
           <p>${list[i].taskContent}</p>
           <div class="taskBtnWrap">
-            <button onclick="completeTask('${list[i].id}')">check</button>
-            <button onclick="deleteTask('${list[i].id}')">delete</button>
+            <button onclick="completeTask('${list[i].id}')"><i class="ri-check-line"></i></button>
+             <button onclick="deleteTask('${list[i].id}')"><i class="ri-delete-bin-6-line"></i></button>
           </div>
         </div>`;
       }
@@ -107,7 +107,7 @@ function filter(event) {
 }
 
 function setActiveTab(activeTab) {
-  taps.forEach(tap => tap.classList.remove("active"));
+  taps.forEach((tap) => tap.classList.remove("active"));
   activeTab.classList.add("active");
 }
 
