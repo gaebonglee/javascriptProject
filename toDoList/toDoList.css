@@ -1,45 +1,119 @@
 body {
   margin: 0;
   padding: 2rem;
-  background-color: lightgray;
+  background-color: rgb(255, 255, 255);
 }
 
-.toDoList_container {
-  background-color: white;
+.MyToDoList_container {
+  background-color: #c6dbe6;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   min-height: 100vh;
   padding: 1rem;
 }
 
-.taskArea {
-  border: 1px solid lightgray;
-  margin-top: 2rem;
-}
-.manuTabs {
+.input_section {
+  min-width: 10rem;
+  margin-top: 1rem;
   display: flex;
-  border-bottom: 1px solid lightgray;
-  position: relative;
+  align-items: center;
+  gap: 1rem;
 }
 
-.manuTap {
-  padding: 1em;
+.inputTesk {
+  width: 30rem;
+  outline: none;
+  font-size: 14px;
+  padding: 5px;
+  border: 2px solid #9abfd8;
+}
+
+.addBtn {
+  border: none;
+  border: 2px solid #9abfd8;
+  background-color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+.listWrap {
+  padding-top: 1rem;
+}
+.tabList {
+  display: flex;
+}
+
+.tapStyle {
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  min-width: 100px;
+  border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
+  background-color: white;
+  transition: 0.3s;
+}
+.tapStyle.active {
+  background-color: #fae6d4;
+}
+.tapStyle p,
+.task p {
+  margin: 0;
 }
 
-#underLine {
-  height: 4px;
-  background-color: pink;
-  position: absolute;
-  left: 0;
-  top: 50px;
-  width: 50px;
-  padding: 0px;
+.task p {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.contentsWrap {
+  background-color: #fae6d4;
+}
+
+.contentsWrap,
+.tapStyle {
+  color: #181818;
+
+  padding: 0.5rem 1rem;
+}
+
+.contentsWrap p {
+  background-color: #fffaf6;
+  padding: 0.5rem;
+  font-size: 13px;
+  margin: 0.5rem 0;
 }
 
 .task {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 1em;
+  background-color: #fffaf6;
+  padding: 0.5rem 1rem;
+  font-size: 13px;
+  margin: 1rem 0;
+  gap: 1rem;
+}
+
+.taskBtnWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.taskBtnWrap button {
+  font-size: 1rem;
+  width: 5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #fae6d4;
+  background-color: white;
+  color: #181818;
+  transition: 0.5s;
+}
+
+.taskBtnWrap button:hover {
+  background-color: #fae6d4;
+  border: 2px solid #fae6d4;
 }
 
 .taskDone {
