@@ -1,0 +1,56 @@
+
+.headerTopWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.normalLine {
+  border: 1px solid black;
+  margin: 0.5rem 0;
+}
+.boldline {
+  border: 2px solid black;
+  margin: 0.5rem 0;
+}
+
+.mainLogo {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 3rem;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuWrap {
+  display: flex;
+  justify-content: space-around;
+}
+
+.menuWrap button {
+  font-size: 14px;
+  background-color: white;
+  border: none;
+  margin: 0;
+}
+
+.newsImage {
+  max-width: 100%;
+  max-height: 10rem;
+}
+
+.col-lg-8 h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.col-lg-8 p {
+  font-size: 13px;
+}
+
+.newsSourceDate {
+  font-size: 12px;
+}
