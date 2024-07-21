@@ -1,10 +1,30 @@
-
+body {
+  margin: 2rem 0;
+}
 .headerTopWrap {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 1rem;
   font-weight: 600;
+}
+
+.searchWrap {
+  font-weight: 700;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  padding: 0 10px;
+  align-content: center;
+}
+.searchInput {
+  outline: none;
+  border: none;
+}
+
+.searchBtn {
+  background-color: white;
+  border: none;
+  outline: none;
 }
 
 .normalLine {
