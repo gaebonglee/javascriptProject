@@ -16,9 +16,13 @@ body {
   padding: 0 10px;
   align-content: center;
 }
+
 .searchInput {
+  padding: 5px;
+  font-size: 13px;
   outline: none;
   border: none;
+  border-radius: 1rem;
 }
 
 .searchBtn {
@@ -73,4 +77,21 @@ body {
 
 .newsSourceDate {
   font-size: 12px;
+}
+
+.alert-danger {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* pageNation */
+.pagiNationWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-item {
+  cursor: pointer;
 }
