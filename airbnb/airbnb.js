@@ -38,3 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const heartIcons = document.querySelectorAll(
+    ".ri-heart-line, .ri-heart-fill"
+  );
+
+  heartIcons.forEach((icon) => {
+    icon.addEventListener("click", () => {
+      icon.classList.toggle("ri-heart-line");
+      icon.classList.toggle("ri-heart-fill");
+    });
+  });
+});
