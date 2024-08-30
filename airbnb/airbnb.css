@@ -1,0 +1,362 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+header {
+  padding: 20px 40px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoDiv {
+  flex: 1 0 140px;
+}
+#logo {
+  height: 35px;
+}
+
+.header_container {
+  width: 100%;
+  max-width: 1250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 25px;
+}
+
+.typeWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.typeBtn {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: gray;
+}
+
+.typeBtn:hover {
+  background-color: #dddddd;
+  border-radius: 25px;
+  color: black;
+}
+.typeBtn.active {
+  color: black;
+}
+.typeBtn:active {
+  color: black;
+}
+
+.profileWrap {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex: 1 0 140px;
+}
+
+#do-airbnb {
+  font-size: 13px;
+  padding: 5px 10px;
+}
+
+#do-airbnb:hover {
+  cursor: pointer;
+  background-color: #dddddd;
+  border-radius: 25px;
+}
+
+.ri-global-line {
+  font-size: 20px;
+  padding: 10px;
+}
+.ri-global-line:hover {
+  background-color: #dddddd;
+  border-radius: 50%;
+}
+
+.iconSection {
+  margin-left: 10px;
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 25px;
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.iconSection:hover {
+  box-shadow: 0 1px 2px rgb(0 0 0/10%), 0 4px 10px rgb(0 0 0 / 10%);
+}
+
+.ri-menu-line {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.ri-user-fill {
+  padding: 3px;
+  border-radius: 50%;
+  background-color: gray;
+  color: white;
+  font-size: 20px;
+}
+
+/* -----------------------search부분----------------------- */
+#search_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1250px;
+  box-sizing: border-box;
+}
+
+.search_borderWrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dddddd;
+  border-radius: 50px;
+  padding: 10px 15px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 50%;
+}
+
+.search_option {
+  padding: 10px;
+  font-size: 12px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  flex-grow: 1;
+}
+
+.search_option.travelDestination {
+  flex-grow: 2;
+}
+
+.search_optionWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.search_optionWrap .input {
+  color: gray;
+  font-size: 14px;
+}
+
+.divider {
+  width: 1px;
+  height: 28px;
+  background-color: #dddddd;
+  margin: 0 15px;
+}
+
+.searchBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff385c;
+  color: white;
+  padding: 13px 13px;
+  border-radius: 50%;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+.searchBtn i {
+  font-size: 18px;
+}
+
+/* -----------------------category-bar -----------------------*/
+.category_container {
+  width: 100%;
+  max-width: 1250px;
+  padding: 20px 40px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cateogryWrap {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+/* ---------------------arrowBtn 스타일링--------------------- */
+.arrowBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 35px;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.arrowBtn:hover {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.arrowBtn button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.arrowBtn i {
+  font-size: 20px;
+  color: #222222;
+}
+
+#category-bar {
+  padding: 10px 20px;
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.category-btn {
+  display: flex;
+  flex-direction: column;
+  color: #717171;
+  font-size: 25px;
+  align-items: center;
+  min-width: 60px;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.category-btn:hover {
+  color: black;
+}
+
+.category-btn:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #dddddd;
+}
+.category-btn.active {
+  color: black;
+}
+.category-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: black;
+}
+
+.category-btn a {
+  font-size: 12px;
+}
+
+/* -----------------------grid----------------------- */
+#grid {
+  display: grid;
+  grid-template-rows: 30px 50px;
+  grid-template-columns: 20px 30px;
+  gap: 10px;
+}
+#grid div {
+  background-color: red;
+  border-radius: 10px;
+}
+
+/* ------------------main-imgContents---------------------- */
+
+main {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 20px 40px;
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  align-items: start;
+  gap: 24px;
+}
+
+.place-img-wrapper {
+  position: relative;
+  width: 270px;
+  height: 270px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+  grid-auto-rows: minmax(50px, auto); 
+  gap: 20px; 
+  padding: 20px;
+}
+
+.place-img-wrapper .ri-heart-line {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: red;
+  font-size: 25px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+.place-img-wrapper .ri-heart-line:active {
+  transform: scale(0.85);
+}
+/* .place-img-wrapper .ri-heart-fill {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: red;
+  font-size: 25px;
+} */
+.description_section {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.description.title,
+.description.price {
+  font-weight: 600;
+}
+
+.description.distance,
+.description.date {
+  font-size: 14px;
+  color: gray;
+}
