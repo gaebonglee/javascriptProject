@@ -193,3 +193,18 @@ body {
     transform: translateY(0);
   }
 }
+
+#list-item-wrapper {
+  width: 383px;
+  margin: 0 auto 500px;
+}
+
+.list-item {
+  display: inline;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+.list-item#on {
+  color: white;
+}
