@@ -235,3 +235,19 @@ body {
   opacity: 1;
   color: white;
 }
+
+main {
+  width: 100%;
+}
+#panel1-img {
+  margin-bottom: 500px;
+  position: relative;
+  height: 500px;
+}
+#money-img {
+  position: absolute;
+  height: 350px;
+
+  left: -50px;
+  transform: translate(-15px, 15px) rotate(20deg);
+}

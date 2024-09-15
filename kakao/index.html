@@ -118,6 +118,11 @@
         <span class="emoji">😁</span><span class="text">신용대출비교하기</span>
       </li>
     </ul>
+    <main>
+      <section id="panel1-img">
+        <img id="money-img" src="./image/money-sack.png" alt="money-img" />
+      </section>
+    </main>
   </body>
   <script>
     const listStyleChangeStartY = 174;
@@ -127,6 +132,9 @@
 
     const division =
       (listStyleChangeEndY - listStyleChangeStartY) / listItems.length;
+
+    const panel1Img = document.getElementById("panel1-img");
+    const moneyImage = document.getElementById("money-img");
 
     window.addEventListener("scroll", () => {
       const currentOnElement = document.querySelector("#on");
@@ -142,6 +150,30 @@
           (window.scrollY - listStyleChangeStartY) / division
         );
         listItems[targetIndex].id = "on";
+      }
+      const scrollYMoney =
+        window.scrollY + document.documentElement.clientHeight;
+
+      if (
+        scrollYMoney > panel1Img.offsetTop &&
+        scrollYMoney < panel1Img.offsetTop + panel1Img.offsetHeight + 100
+      ) {
+        const translateX =
+          50 -
+          (50 * 1.3(scrollYMoney - panel1Img.offsetTop)) /
+            (panel1Img.offsetHeight + 100);
+
+        const translateY =
+          -15 +
+          (15 * (scrollYMoney - panel1Img.offsetTop)) /
+            (panel1Img.offsetHeight + 100);
+
+        const rotateDeg =
+          20 -
+          (20 * 1.7 * (scrollYMoney - panel1Img.offsetTop)) /
+            (panel1Img.offsetHeight + 100);
+
+        moneyImage.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotateDeg}deg)`;
       }
     });
   </script>
