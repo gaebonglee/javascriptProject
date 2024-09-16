@@ -207,7 +207,7 @@ body {
 
 #panel1-img {
   overflow: hidden;
-  margin-bottom: 500px;
+  /* margin-bottom: 500px; */
   position: relative;
   height: 320px;
 }

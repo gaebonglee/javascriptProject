@@ -141,3 +141,44 @@ body {
   margin: 0 auto;
   height: 350px;
 }
+
+/*----------video_text--------------*/
+.panel2_text {
+  padding-top: 3rem;
+  position: relative;
+  width: 315px;
+  height: 235px;
+  margin: 0 auto;
+}
+
+.panelText {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.panelText.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.panelText.right {
+  text-align: right;
+}
+
+.panelText.left {
+  text-align: left;
+}
+
+.text_title {
+  margin-bottom: 1rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.text_description {
+  color: lightgray;
+  line-height: 1.5;
+}

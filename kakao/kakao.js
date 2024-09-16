@@ -2,10 +2,11 @@ const listStyleChangeStartY = 174;
 const listStyleChangeEndY = 1585;
 
 const listItems = document.querySelectorAll(".list-item");
-const moneyImage = document.getElementById("money-img");
 
 const division =
   (listStyleChangeEndY - listStyleChangeStartY) / listItems.length;
+
+const moneyImage = document.getElementById("money-img");
 
 const startIndexForRotation = 22;
 const endIndexForRotation = 25;
@@ -16,29 +17,29 @@ const videoElement = document.getElementById("video");
 const videoSection = document.getElementById("video-section");
 const panel2Wrap = document.getElementById("panel2");
 
+const panelTextRight = document.querySelector(".panelText.right");
+const panelTextLeft = document.querySelector(".panelText.left");
+let isPanelTextRightShown = false;
+let isPanelTextLeftShown = false;
+
 function videoCenterElement(elementId, video) {
   const element = document.getElementById(elementId);
   const parent = element.parentElement;
 
-  const scrollY = window.scrollY;
-  const videoSectionTop = videoSection.offsetTop;
-  const videoSectionBottom = videoSectionTop + videoSection.offsetHeight;
-  const windowHeight = document.documentElement.clientHeight;
-
-  // 동영상이 화면 중앙에 위치하도록 fixed 상태 설정
   if (
-    scrollY > videoSectionTop - windowHeight / 2 &&
-    scrollY < videoSectionBottom - windowHeight / 2
+    window.scrollY >
+    parent.offsetTop -
+      (document.documentElement.clientHeight - element.offsetHeight) / 2
   ) {
     element.style.position = "fixed";
     element.style.top = "50%";
     element.style.left = "50%";
     element.style.transform = "translate(-50%, -50%)";
-    if (video) {
-      video.currentTime = (scrollY - videoSectionTop) / videoPlayBack;
-    }
+
+    if (video)
+      video.currentTime =
+        (window.scrollY - videoSection.offsetTop) / videoPlayBack;
   } else {
-    // 상단을 지나가거나 하단을 지나면 다시 relative로 전환
     element.style.position = "relative";
     element.style.top = "initial";
     element.style.left = "initial";
@@ -92,7 +93,8 @@ window.addEventListener("scroll", () => {
     window.scrollY >
     videoSection.offsetTop +
       videoSection.offsetHeight -
-      (document.documentElement.clientHeight - panel2Wrap.offsetHeight) / 2
+      (panel2Wrap.offsetHeight +
+        (document.documentElement.clientHeight - panel2Wrap.offsetHeight) / 2)
   ) {
     panel2Wrap.style.position = "relative";
     panel2Wrap.style.top = "initial";
