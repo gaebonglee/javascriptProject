@@ -115,16 +115,29 @@ body {
 
 #panel1-img {
   margin: 0 auto;
-  max-width: 350px;
-  max-height: 275px;
-  min-height: 220px;
+  max-width: 766px;
+  max-height: 375px;
+  min-height: 320px;
   height: 100%;
-  width: 100%;
   position: relative;
 }
 
 #money-img {
   position: absolute;
+  max-width: 375px;
+  min-width: 320px;
   width: 100%;
-  left: -200px;
+  left: -300px;
+  top: -50px;
+  transition: transform 0.1s ease-in-out;
+}
+
+/*----------video--------------*/
+#video-section {
+  margin-bottom: 1000px;
+}
+#video {
+  display: block;
+  margin: 0 auto;
+  height: 350px;
 }
