@@ -20,20 +20,26 @@ function videoCenterElement(elementId, video) {
   const element = document.getElementById(elementId);
   const parent = element.parentElement;
 
+  const scrollY = window.scrollY;
+  const videoSectionTop = videoSection.offsetTop;
+  const videoSectionBottom = videoSectionTop + videoSection.offsetHeight;
+  const windowHeight = document.documentElement.clientHeight;
+
+  // 동영상이 화면 중앙에 위치하도록 fixed 상태 설정
   if (
-    window.scrollY >
-    parent.offsetTop -
-      (document.documentElement.clientHeight - element.offsetHeight) / 2
+    scrollY > videoSectionTop - windowHeight / 2 &&
+    scrollY < videoSectionBottom - windowHeight / 2
   ) {
     element.style.position = "fixed";
     element.style.top = "50%";
     element.style.left = "50%";
     element.style.transform = "translate(-50%, -50%)";
-  }
-  if (video)
-    video.currentTime =
-      (window.scrollY - videoSection.offsetTop) / videoPlayBack;
-  else {
+    if (video) {
+      video.currentTime =
+        (scrollY - videoSectionTop) / videoPlayBack;
+    }
+  } else {
+    // 상단을 지나가거나 하단을 지나면 다시 relative로 전환
     element.style.position = "relative";
     element.style.top = "initial";
     element.style.left = "initial";
@@ -78,12 +84,16 @@ window.addEventListener("scroll", () => {
       moneyImage.style.transform = `rotate(15deg)`;
     }
   }
+
+  // 비디오 중앙 위치 설정 및 스크롤 이벤트 처리
   videoCenterElement("fixed-wrapper", videoElement);
+
+  // 동영상이 화면을 벗어나면 고정 해제
   if (
     window.scrollY >
     videoSection.offsetTop +
       videoSection.offsetHeight -
-      (document.documentElement.clientHeight = fixedWrapper.offsetHeight) / 2
+      (document.documentElement.clientHeight - fixedWrapper.offsetHeight) / 2
   ) {
     fixedWrapper.style.position = "relative";
     fixedWrapper.style.top = "initial";
