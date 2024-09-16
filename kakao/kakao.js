@@ -14,7 +14,7 @@ const videoPlayBack = 500;
 
 const videoElement = document.getElementById("video");
 const videoSection = document.getElementById("video-section");
-const fixedWrapper = document.getElementById("fixed-wrapper");
+const panel2Wrap = document.getElementById("panel2");
 
 function videoCenterElement(elementId, video) {
   const element = document.getElementById(elementId);
@@ -35,8 +35,7 @@ function videoCenterElement(elementId, video) {
     element.style.left = "50%";
     element.style.transform = "translate(-50%, -50%)";
     if (video) {
-      video.currentTime =
-        (scrollY - videoSectionTop) / videoPlayBack;
+      video.currentTime = (scrollY - videoSectionTop) / videoPlayBack;
     }
   } else {
     // 상단을 지나가거나 하단을 지나면 다시 relative로 전환
@@ -86,20 +85,20 @@ window.addEventListener("scroll", () => {
   }
 
   // 비디오 중앙 위치 설정 및 스크롤 이벤트 처리
-  videoCenterElement("fixed-wrapper", videoElement);
+  videoCenterElement("panel2", videoElement);
 
   // 동영상이 화면을 벗어나면 고정 해제
   if (
     window.scrollY >
     videoSection.offsetTop +
       videoSection.offsetHeight -
-      (document.documentElement.clientHeight - fixedWrapper.offsetHeight) / 2
+      (document.documentElement.clientHeight - panel2Wrap.offsetHeight) / 2
   ) {
-    fixedWrapper.style.position = "relative";
-    fixedWrapper.style.top = "initial";
-    fixedWrapper.style.left = "initial";
-    fixedWrapper.style.transform = `translateY(${
-      videoSection.offsetHeight - fixedWrapper.offsetHeight
+    panel2Wrap.style.position = "relative";
+    panel2Wrap.style.top = "initial";
+    panel2Wrap.style.left = "initial";
+    panel2Wrap.style.transform = `translateY(${
+      videoSection.offsetHeight - panel2Wrap.offsetHeight
     }px)`;
   }
 });
