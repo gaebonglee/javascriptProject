@@ -17,11 +17,6 @@ const videoElement = document.getElementById("video");
 const videoSection = document.getElementById("video-section");
 const panel2Wrap = document.getElementById("panel2");
 
-const panelTextRight = document.querySelector(".panelText.right");
-const panelTextLeft = document.querySelector(".panelText.left");
-let isPanelTextRightShown = false;
-let isPanelTextLeftShown = false;
-
 function videoCenterElement(elementId, video) {
   const element = document.getElementById(elementId);
   const parent = element.parentElement;
@@ -52,7 +47,13 @@ videoElement.addEventListener("loadedmetadata", () => {
     videoElement.duration * videoPlayBack + "px";
 });
 
+const panel2TextFadeStartY = 2500;
+const panel2TextFadeEndY = 3500;
+const fadeTotalDistance = panel2TextFadeEndY - panel2TextFadeStartY;
+
 window.addEventListener("scroll", () => {
+  console.log(window.scrollY);
+
   const currentOnElement = document.querySelector("#on");
   if (currentOnElement) {
     currentOnElement.removeAttribute("id");
@@ -102,5 +103,50 @@ window.addEventListener("scroll", () => {
     panel2Wrap.style.transform = `translateY(${
       videoSection.offsetHeight - panel2Wrap.offsetHeight
     }px)`;
+  }
+  // panelText Fade 처리 부분
+
+  if (
+    window.scrollY > panel2TextFadeStartY &&
+    window.scrollY < panel2TextFadeEndY
+  ) {
+    const fadeProgress =
+      (window.scrollY - panel2TextFadeStartY) / fadeTotalDistance;
+    const opacity = Math.min(1, fadeProgress);
+    const translateY = 50 * (1 - fadeProgress);
+    document.querySelector(".panelText.right").style.opacity = opacity;
+    document.querySelector(
+      ".panelText.right"
+    ).style.transform = `translateY(${translateY}px)`;
+  } else if (window.scrollY <= panel2TextFadeStartY) {
+    document.querySelector(".panelText.right").style.opacity = 0;
+    document.querySelector(".panelText.right").style.transform =
+      "translateY(50px)";
+  } else {
+    document.querySelector(".panelText.right").style.opacity = 1;
+    document.querySelector(".panelText.right").style.transform =
+      "translateY(0)";
+  }
+
+  if (
+    window.scrollY > panel2TextFadeEndY &&
+    window.scrollY < panel2TextFadeEndY + fadeTotalDistance
+  ) {
+    const fadeProgress =
+      (window.scrollY - panel2TextFadeEndY) / fadeTotalDistance;
+    const opacity = Math.min(1, fadeProgress);
+    const translateY = 50 * (1 - fadeProgress);
+    document.querySelector(".panelText.left").style.opacity = opacity;
+    document.querySelector(
+      ".panelText.left"
+    ).style.transform = `translateY(${translateY}px)`;
+  } else if (window.scrollY <= panel2TextFadeEndY) {
+    document.querySelector(".panelText.left").style.opacity = 0;
+    document.querySelector(".panelText.left").style.transform =
+      "translateY(50px)";
+  } else {
+    // 사라진 상태 유지
+    document.querySelector(".panelText.left").style.opacity = 1;
+    document.querySelector(".panelText.left").style.transform = "translateY(0)";
   }
 });

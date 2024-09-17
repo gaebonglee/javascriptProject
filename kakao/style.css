@@ -152,14 +152,8 @@ body {
 }
 
 .panelText {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-
-.panelText.show {
-  opacity: 1;
-  transform: translateY(0);
+  position: absolute;
+  transition: opacity 0.5s ease, transform 1s ease;
 }
 
 .panelText.right {
@@ -168,6 +162,8 @@ body {
 
 .panelText.left {
   text-align: left;
+  bottom: 0; /* 필요에 따라 위치 조정 */
+  left: 0;
 }
 
 .text_title {
