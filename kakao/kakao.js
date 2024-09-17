@@ -20,7 +20,7 @@ const panel2Wrap = document.getElementById("panel2");
 const fixedRightText = document.querySelector(".panelText.right");
 const fixedLeftText = document.querySelector(".panelText.left");
 
-function videoCenterElement(elementId, video) {
+function centerElement(elementId, video) {
   const element = document.getElementById(elementId);
   const parent = element.parentElement;
 
@@ -59,7 +59,6 @@ const LeftTextFadeEndY = 7000;
 
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
-  console.log(scrollY);
 
   const currentOnElement = document.querySelector("#on");
   if (currentOnElement) {
@@ -94,7 +93,7 @@ window.addEventListener("scroll", () => {
   }
 
   // 비디오 중앙 위치 설정 및 스크롤 이벤트 처리
-  videoCenterElement("panel2", videoElement);
+  centerElement("panel2", videoElement);
 
   // 동영상이 화면을 벗어나면 고정 해제
   if (
@@ -134,7 +133,7 @@ window.addEventListener("scroll", () => {
   } else if (scrollY > RightTextFadeOutEndY) {
     fixedRightText.style.transform = `translateY(0px)`;
     fixedRightText.style.opacity = 0;
-  } 
+  }
 
   if (scrollY > LeftTextFadeStartY && scrollY < LeftTextFadeEndY) {
     fixedLeftText.style.transform = `translate(${
@@ -148,5 +147,38 @@ window.addEventListener("scroll", () => {
     fixedLeftText.style.opacity = 0;
   }
 
-  centerEl
+  centerElement("bank-beyond");
+});
+
+// 이미지 슬라이드
+let currentImage = 0;
+
+const sliderImages = document.querySelectorAll(".sliderImg");
+const sliderIndex = document.getElementById("slider-index");
+
+const handleSlideChange = (step) => {
+  currentImage += step;
+  if (currentImage < 0) {
+    currentImage = sliderImages.length - 1;
+  } else if (currentImage >= sliderImages.length) {
+    currentImage = 0;
+  }
+
+  sliderContentWrapper.scrollLeft = sliderImages[currentImage].offsetLeft;
+  slider;
+};
+
+document.getElementById("left-btn").addEventListener("click", () => {
+  handleSlideChange(-1);
+});
+document.getElementById("right-btn").addEventListener("click", () => {
+  handleSlideChange(1);
+});
+
+const sliderContentWrapper = document.getElementById("slider-content-wrapper");
+
+sliderContentWrapper.addEventListener("scroll", () => {
+  const imageWidth = document.querySelectorAll(".sliderImg")[0].offsetWidth;
+  currentImage = Math.round(sliderContentWrapper.scrollLeft / imageWidth);
+  sliderIndex.innerText = `${currentImage + 1}/${sliderImages.length}`;
 });

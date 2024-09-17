@@ -8,6 +8,7 @@ body {
 
 #gaebongBank_contents {
   min-height: 100%;
+  width: 100%;
 }
 
 .intro_main {
@@ -163,7 +164,7 @@ body {
 
 .panelText.left {
   text-align: left;
-  bottom: 0; /* 필요에 따라 위치 조정 */
+  bottom: 0;
   left: 0;
 }
 
@@ -181,3 +182,54 @@ body {
 }
 
 /* bank-beyond-wrapper */
+#panel3 {
+  height: 380px;
+}
+#bank-beyond {
+  display: flex;
+  justify-content: center;
+}
+
+#panel4 {
+  position: relative;
+  background-color: white;
+  height: 1000px;
+  z-index: 2;
+}
+
+#slider-container {
+  margin: 0 auto;
+  position: relative;
+  width: 300px;
+}
+#slider-content-wrapper {
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+#slider-content-wrapper::-webkit-scrollbar {
+  width: 0;
+}
+
+#slider-content {
+  display: flex;
+}
+.sliderImg {
+  width: 300px;
+  scroll-snap-align: center;
+}
+
+.btnWrap {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.slider-index {
+  font-size: 14px;
+  font-weight: 600;
+}
