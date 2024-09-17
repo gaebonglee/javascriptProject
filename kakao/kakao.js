@@ -155,6 +155,7 @@ let currentImage = 0;
 
 const sliderImages = document.querySelectorAll(".sliderImg");
 const sliderIndex = document.getElementById("slider-index");
+const sliderContentWrapper = document.getElementById("slider-content-wrapper");
 
 const handleSlideChange = (step) => {
   currentImage += step;
@@ -165,7 +166,7 @@ const handleSlideChange = (step) => {
   }
 
   sliderContentWrapper.scrollLeft = sliderImages[currentImage].offsetLeft;
-  slider;
+  sliderIndex.innerText = `${currentImage + 1} / ${sliderImages.length}`;
 };
 
 document.getElementById("left-btn").addEventListener("click", () => {
@@ -175,10 +176,11 @@ document.getElementById("right-btn").addEventListener("click", () => {
   handleSlideChange(1);
 });
 
-const sliderContentWrapper = document.getElementById("slider-content-wrapper");
-
-sliderContentWrapper.addEventListener("scroll", () => {
-  const imageWidth = document.querySelectorAll(".sliderImg")[0].offsetWidth;
-  currentImage = Math.round(sliderContentWrapper.scrollLeft / imageWidth);
-  sliderIndex.innerText = `${currentImage + 1}/${sliderImages.length}`;
+sliderContentWrapper.addEventListener("wheel", (event) => {
+  event.preventDefault();
+  if (event.deltaX > 0) {
+    handleSlideChange(1);
+  } else {
+    handleSlideChange(-1);
+  }
 });
