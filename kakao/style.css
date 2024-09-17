@@ -154,6 +154,7 @@ body {
 .panelText {
   position: absolute;
   transition: opacity 0.5s ease, transform 1s ease;
+  width: 100%;
 }
 
 .panelText.right {
@@ -178,3 +179,5 @@ body {
   color: lightgray;
   line-height: 1.5;
 }
+
+/* bank-beyond-wrapper */

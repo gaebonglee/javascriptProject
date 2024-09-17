@@ -17,6 +17,9 @@ const videoElement = document.getElementById("video");
 const videoSection = document.getElementById("video-section");
 const panel2Wrap = document.getElementById("panel2");
 
+const fixedRightText = document.querySelector(".panelText.right");
+const fixedLeftText = document.querySelector(".panelText.left");
+
 function videoCenterElement(elementId, video) {
   const element = document.getElementById(elementId);
   const parent = element.parentElement;
@@ -47,12 +50,16 @@ videoElement.addEventListener("loadedmetadata", () => {
     videoElement.duration * videoPlayBack + "px";
 });
 
-const panel2TextFadeStartY = 2500;
-const panel2TextFadeEndY = 3500;
-const fadeTotalDistance = panel2TextFadeEndY - panel2TextFadeStartY;
+const RightTextFadeStartY = 1500;
+const RightTextFadeEndY = 3500;
+const RightTextFadeOutStartY = 3500;
+const RightTextFadeOutEndY = 4000;
+const LeftTextFadeStartY = 4000;
+const LeftTextFadeEndY = 7000;
 
 window.addEventListener("scroll", () => {
-  console.log(window.scrollY);
+  const scrollY = window.scrollY;
+  console.log(scrollY);
 
   const currentOnElement = document.querySelector("#on");
   if (currentOnElement) {
@@ -104,49 +111,42 @@ window.addEventListener("scroll", () => {
       videoSection.offsetHeight - panel2Wrap.offsetHeight
     }px)`;
   }
+
   // panelText Fade 처리 부분
 
-  if (
-    window.scrollY > panel2TextFadeStartY &&
-    window.scrollY < panel2TextFadeEndY
-  ) {
-    const fadeProgress =
-      (window.scrollY - panel2TextFadeStartY) / fadeTotalDistance;
-    const opacity = Math.min(1, fadeProgress);
-    const translateY = 50 * (1 - fadeProgress);
-    document.querySelector(".panelText.right").style.opacity = opacity;
-    document.querySelector(
-      ".panelText.right"
-    ).style.transform = `translateY(${translateY}px)`;
-  } else if (window.scrollY <= panel2TextFadeStartY) {
-    document.querySelector(".panelText.right").style.opacity = 0;
-    document.querySelector(".panelText.right").style.transform =
-      "translateY(50px)";
+  if (scrollY > RightTextFadeStartY && scrollY < RightTextFadeEndY) {
+    fixedRightText.style.transform = `translate(${
+      RightTextFadeEndY - scrollY
+    })px`;
+    fixedRightText.style.opacity = (scrollY - RightTextFadeStartY) / 1000;
+  } else if (scrollY > RightTextFadeEndY) {
+    fixedRightText.style.transform = `translateY(0px)`;
+    fixedRightText.style.opacity = 1;
   } else {
-    document.querySelector(".panelText.right").style.opacity = 1;
-    document.querySelector(".panelText.right").style.transform =
-      "translateY(0)";
+    fixedRightText.style.opacity = 0;
   }
 
-  if (
-    window.scrollY > panel2TextFadeEndY &&
-    window.scrollY < panel2TextFadeEndY + fadeTotalDistance
-  ) {
-    const fadeProgress =
-      (window.scrollY - panel2TextFadeEndY) / fadeTotalDistance;
-    const opacity = Math.min(1, fadeProgress);
-    const translateY = 50 * (1 - fadeProgress);
-    document.querySelector(".panelText.left").style.opacity = opacity;
-    document.querySelector(
-      ".panelText.left"
-    ).style.transform = `translateY(${translateY}px)`;
-  } else if (window.scrollY <= panel2TextFadeEndY) {
-    document.querySelector(".panelText.left").style.opacity = 0;
-    document.querySelector(".panelText.left").style.transform =
-      "translateY(50px)";
+  if (scrollY > RightTextFadeOutStartY && scrollY < RightTextFadeOutEndY) {
+    fixedRightText.style.transform = `translate(${
+      RightTextFadeOutEndY - scrollY
+    })px`;
+    fixedRightText.style.opacity = (scrollY - RightTextFadeOutStartY) / 700;
+  } else if (scrollY > RightTextFadeOutEndY) {
+    fixedRightText.style.transform = `translateY(0px)`;
+    fixedRightText.style.opacity = 0;
+  } 
+
+  if (scrollY > LeftTextFadeStartY && scrollY < LeftTextFadeEndY) {
+    fixedLeftText.style.transform = `translate(${
+      LeftTextFadeEndY - scrollY
+    })px`;
+    fixedLeftText.style.opacity = (scrollY - LeftTextFadeStartY) / 1000;
+  } else if (scrollY > LeftTextFadeEndY) {
+    fixedLeftText.style.transform = `translateY(0px)`;
+    fixedLeftText.style.opacity = 1;
   } else {
-    // 사라진 상태 유지
-    document.querySelector(".panelText.left").style.opacity = 1;
-    document.querySelector(".panelText.left").style.transform = "translateY(0)";
+    fixedLeftText.style.opacity = 0;
   }
+
+  centerEl
 });
