@@ -59,7 +59,7 @@ preloaderBtn.addEventListener("mousedown", () => {
       document.querySelector(".preloader").classList.add("hidden-area");
       header.classList.remove("hidden-area");
       header.classList.add("show_area");
-      clearInterval(intervalId);
+      clearInterval(intervalId); 
     }
   }, 10);
 });

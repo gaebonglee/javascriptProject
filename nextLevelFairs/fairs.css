@@ -166,3 +166,16 @@ body {
   left: 300px;
   transform: rotate(35deg);
 }
+
+.textWrap {
+  display: flex;
+  flex-direction: column;
+  font-size: 5rem;
+  line-height: 1.5;
+  font-weight: 700;
+  color: #d5a54e;
+  font-family: serif;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
