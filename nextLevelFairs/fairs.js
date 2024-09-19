@@ -62,9 +62,13 @@ preloaderBtn.addEventListener("mousedown", () => {
     if (scale >= 1 + preloaderHideThreshold) {
       document.querySelector(".preloader").classList.add("hidden-area");
 
+      const poster = document.querySelector(".poster");
+
       header.classList.remove("hidden-area");
+      poster.classList.remove("hidden-area");
 
       header.classList.add("shown-area");
+      poster.classList.add("shown-area");
 
       clearInterval(intervalId);
     }
@@ -116,4 +120,19 @@ header.addEventListener("mousemove", (e) => {
   document.querySelector("#rectangle-5").style.transform = `translate(${
     xRelativeToHeader * -10
   }px, ${yRelativeToHeader * -30}px) rotate(35deg)`;
+});
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("posterImg_state_visible");
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+document.querySelectorAll(".posterImg_wrapper").forEach((poster) => {
+  observer.observe(poster);
 });

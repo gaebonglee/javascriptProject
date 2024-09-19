@@ -111,7 +111,6 @@ body {
 .header {
   position: relative;
   height: 100vh;
-  width: 100%;
   overflow-x: hidden;
 }
 
@@ -190,4 +189,82 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+/* parallax _ IMG */
+
+.poster_parallax {
+  position: relative;
+  height: 1500px;
+}
+.posterImg {
+  position: absolute;
+  opacity: 0;
+}
+
+.posterImg_wrapper {
+  position: absolute;
+  width: 100%;
+}
+
+#posterImg_wrapper_1 {
+  right: 0;
+  height: 100%;
+}
+#posterImg_wrapper_2 {
+  top: 10%;
+  left: 5%;
+  height: 667px;
+}
+#posterImg_wrapper_3 {
+  top: 35%;
+  right: 0;
+  height: 772px;
+}
+
+#posterImg_1 {
+  right: 0;
+  width: 500px;
+}
+#posterImg_2 {
+  height: 100%;
+}
+#posterImg_3 {
+  right: 0;
+  height: 250px;
+  width: 700px;
+}
+
+@keyframes appear-right-to-left {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes appear-left-to-right {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.posterImg_state_visible #posterImg_1 {
+  animation: appear-right-to-left 0.5s ease;
+  animation-fill-mode: forwards;
+}
+.posterImg_state_visible #posterImg_2 {
+  animation: appear-left-to-right 0.5s ease;
+  animation-fill-mode: forwards;
+}
+.posterImg_state_visible #posterImg_3 {
+  animation: appear-right-to-left 1s ease-in-out;
+  animation-fill-mode: forwards;
 }
