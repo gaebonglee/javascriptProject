@@ -41,11 +41,11 @@ body {
 @keyframes ripple {
   0% {
     transform: scale(0);
-    opacity: 1;
+    opacity: 0.5;
   }
   20% {
     transform: scale(3);
-    opacity: 1;
+    opacity: 0.5;
   }
   100% {
     transform: scale(6);
@@ -87,6 +87,7 @@ body {
   background-color: rgb(30, 64, 41);
   margin-top: -60px;
   margin-left: -60px;
+  cursor: pointer;
 }
 
 .preloader_btn_hold {
@@ -94,4 +95,74 @@ body {
   font-weight: 800;
   line-height: 20px;
   letter-spacing: normal;
+}
+
+.hidden-area {
+  display: none;
+  opacity: 0;
+}
+
+/* circle */
+.circle {
+  position: absolute;
+  display: inline-block;
+  width: 350px;
+  height: 350px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.rectangle {
+  position: absolute;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+#circle-1 {
+  top: -100px;
+  left: -130px;
+}
+
+#circle-2 {
+  bottom: 5vh;
+  right: -230px;
+}
+
+#rectangle-1 {
+  width: 250px;
+  height: 35px;
+  top: 20vh;
+  left: 300px;
+  transform: rotate(125deg);
+}
+
+#rectangle-2 {
+  width: 220px;
+  height: 75px;
+  top: 20vh;
+  right: 300px;
+  transform: rotate(45deg);
+}
+#rectangle-3 {
+  width: 65px;
+  height: 75px;
+  bottom: 15vh;
+  right: 300px;
+  transform: rotate(140deg);
+}
+
+#rectangle-4 {
+  width: 150px;
+  height: 50px;
+  bottom: 25vh;
+  right: 350px;
+  transform: rotate(110deg);
+}
+
+#rectangle-5 {
+  width: 210px;
+  height: 100px;
+  bottom: 20vh;
+  left: 300px;
+  transform: rotate(35deg);
 }
