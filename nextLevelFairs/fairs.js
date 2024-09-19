@@ -85,3 +85,35 @@ preloaderBtn.addEventListener("mouseup", () => {
   }, 10);
 });
 
+header.addEventListener("mousemove", (e) => {
+  const xRelativeToHeader = e.clientX / header.clientWidth;
+  const yRelativeToHeader = e.clientY / header.clientHeight;
+
+  document.querySelector(".header_title").style.transform = `translate(${
+    xRelativeToHeader * -50
+  }px,${yRelativeToHeader * -50}px)`;
+
+  //".circle"클래스를 가진 여러 요소를 선택할 경우 querySelectorAll로 반환된 NodeList에 대해 forEach()를 사용하여 스타일을 개별적으로 적용
+  document.querySelectorAll(".circle").forEach((circle) => {
+    circle.style.transform = `translate(${xRelativeToHeader * -10}px, ${
+      yRelativeToHeader * -30
+    }px)`;
+  });
+
+  //querySelector()나 getElementById()는 문서 내에서 하나의 요소만 반환합니다. 이때 반환되는 요소는 단일 DOM 객체이며, 이 객체에 바로 스타일을 적용
+  document.querySelector("#rectangle-1").style.transform = `translate(${
+    xRelativeToHeader * -10
+  }px, ${yRelativeToHeader * -30}px) rotate(125deg)`;
+  document.querySelector("#rectangle-2").style.transform = `translate(${
+    xRelativeToHeader * -25
+  }px, ${yRelativeToHeader * -10}px) rotate(45deg)`;
+  document.querySelector("#rectangle-3").style.transform = `translate(${
+    xRelativeToHeader * -10
+  }px, ${yRelativeToHeader * -30}px) rotate(140deg)`;
+  document.querySelector("#rectangle-4").style.transform = `translate(${
+    xRelativeToHeader * -25
+  }px, ${yRelativeToHeader * -10}px) rotate(110deg)`;
+  document.querySelector("#rectangle-5").style.transform = `translate(${
+    xRelativeToHeader * -10
+  }px, ${yRelativeToHeader * -30}px) rotate(35deg)`;
+});
