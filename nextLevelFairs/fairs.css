@@ -2,6 +2,17 @@ body {
   cursor: none !important;
   background-color: #1e4029;
 }
+
+.shown-area {
+  display: block;
+  opacity: 1;
+}
+
+.hidden-area {
+  display: none;
+  opacity: 0;
+}
+
 .cursor {
   position: fixed;
   top: 0;
@@ -9,10 +20,10 @@ body {
   right: 0;
   bottom: 0;
   z-index: 9999;
-  pointer-events: none !important ;
+  pointer-events: none !important;
 }
 
-.cursor_default_inner {
+.cursor__default__inner {
   position: absolute;
   display: inline-block;
   width: 20px;
@@ -23,18 +34,18 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.cursor_trace_inner {
+.cursor__trace__inner {
   position: absolute;
   display: inline-block;
-  width: 35px;
-  height: 35px;
-  background-color: rgba(0, 0, 0, 0.2);
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.25);
   transform: translate(-50%, -50%);
-  transition: all 0.002s ease-in-out;
+  transition: all 0.04s ease;
 }
 
-.cursor_active .cursor_trace_inner {
+.cursor--active .cursor__trace__inner {
   transform: scale(0.5) translate(-100%, -100%);
   transition: transform 0.3s ease;
 }
@@ -42,17 +53,18 @@ body {
 @keyframes ripple {
   0% {
     transform: scale(0);
-    opacity: 0.5;
+    opacity: 1;
   }
   20% {
-    transform: scale(3);
-    opacity: 0.5;
+    transform: scale(5);
+    opacity: 1;
   }
   100% {
-    transform: scale(6);
+    transform: scale(10);
     opacity: 0;
   }
 }
+
 .ripple {
   position: absolute;
   display: inline-block;
@@ -60,11 +72,10 @@ body {
   height: 20px;
   border-radius: 50%;
   background-color: #d5a54e;
-  animation: ripple 0.5s ease;
+  animation: ripple 0.5s ease-out;
   animation-fill-mode: forwards;
+  z-index: -1;
 }
-
-/* Hold Page */
 
 .preloader {
   position: absolute;
@@ -73,10 +84,10 @@ body {
   background-color: #521714;
   width: 100%;
   height: 100%;
-  z-index: 99;
+  z-index: 999;
 }
 
-.preloader_btn {
+.preloader__btn {
   position: absolute;
   top: 50vh;
   left: 50vw;
@@ -84,25 +95,26 @@ body {
   height: 120px;
   border-radius: 50%;
   border: none;
-  color: #d5a54e;
+  color: rgb(213, 165, 78);
   background-color: rgb(30, 64, 41);
   margin-top: -60px;
   margin-left: -60px;
 }
 
-.preloader_btn_hold {
+.preloader__btn_hold {
   font-size: 19px;
-  font-weight: 800;
   line-height: 20px;
+  font-weight: 800;
   letter-spacing: normal;
 }
 
-.hidden-area {
-  display: none;
-  opacity: 0;
+.header {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
-/* circle */
 .circle {
   position: absolute;
   display: inline-block;
@@ -110,12 +122,6 @@ body {
   height: 350px;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 50%;
-}
-
-.rectangle {
-  position: absolute;
-  display: inline-block;
-  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 #circle-1 {
@@ -126,6 +132,12 @@ body {
 #circle-2 {
   bottom: 5vh;
   right: -230px;
+}
+
+.rectangle {
+  position: absolute;
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 #rectangle-1 {
