@@ -12,6 +12,44 @@ canvas.style.height = canvasHeight + "px";
 canvas.width = canvasWidth * dpr;
 canvas.height = canvasHeight * dpr;
 ctx.scale(dpr, dpr);
+const feGaussianBlur = document.querySelector("feGaussianBlur");
+const feColorMatrix = document.querySelector("feColorMatrix");
+
+const controls = new (function () {
+  this.blurValue = 40;
+  this.alphaChannel = 100;
+  this.alphaOffset = -23;
+  this.acc = 1.03;
+})();
+
+let gui = new dat.GUI();
+
+const f1 = gui.addFolder("Gooey Effect");
+f1.open()
+f1.add(controls, "blurValue", 0, 100).onChange((value) => {
+  feGaussianBlur.setAttribute("stdDeviation", value);
+});
+
+f1.add(controls, "alphaChannel", 1, 200).onChange((value) => {
+  feColorMatrix.setAttribute(
+    "values",
+    `1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${value} ${controls.alphaOffset} `
+  );
+});
+f1.add(controls, "alphaOffset", -40, 40).onChange((value) => {
+  feColorMatrix.setAttribute(
+    "values",
+    `1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ${controls.alphaChannel} ${value} `
+  );
+});
+
+const f2 = gui.addFolder("Particle Property")
+f2.open()
+f2.add(controls, "acc", 1, 1.5, 0.01).onChange((value) => {
+  particles.forEach((particle) => (particle.acc = value));
+});
+
+
 
 class Particle {
   constructor(x, y, radius, vy) {
@@ -20,11 +58,11 @@ class Particle {
     this.radius = radius;
     this.vy = vy;
     //1이하의 값으로 하면 0의 값을 수렴
-    this.acc=1.05
+    this.acc = 1.05;
   }
 
   update() {
-    this.vy *= this.acc
+    this.vy *= this.acc;
     this.y += this.vy;
   }
   draw() {
