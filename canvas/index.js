@@ -19,9 +19,12 @@ class Particle {
     this.y = y;
     this.radius = radius;
     this.vy = vy;
+    //1이하의 값으로 하면 0의 값을 수렴
+    this.acc=1.05
   }
 
   update() {
+    this.vy *= this.acc
     this.y += this.vy;
   }
   draw() {
