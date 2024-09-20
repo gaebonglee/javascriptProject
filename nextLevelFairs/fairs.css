@@ -1,6 +1,7 @@
 body {
   cursor: none !important;
   background-color: #1e4029;
+  overflow-x: hidden;
 }
 
 .shown-area {
@@ -111,7 +112,6 @@ body {
 .header {
   position: relative;
   height: 100vh;
-  overflow-x: hidden;
 }
 
 .circle {
@@ -257,14 +257,14 @@ body {
 }
 
 .posterImg_state_visible #posterImg_1 {
-  animation: appear-right-to-left 0.5s ease;
+  animation: appear-right-to-left 1s ease;
   animation-fill-mode: forwards;
 }
 .posterImg_state_visible #posterImg_2 {
-  animation: appear-left-to-right 0.5s ease;
+  animation: appear-left-to-right 1.5s ease;
   animation-fill-mode: forwards;
 }
 .posterImg_state_visible #posterImg_3 {
-  animation: appear-right-to-left 1s ease-in-out;
+  animation: appear-right-to-left 1.5s ease-in-out;
   animation-fill-mode: forwards;
 }
