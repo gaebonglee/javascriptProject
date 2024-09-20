@@ -5,6 +5,11 @@ body {
   overflow: hidden;
 }
 
+/* canvas {
+  background-color: #0b0b0b;
+  filter: blur(25px) contrast(50);
+} */
 canvas {
+  filter: url("#gooey");
   background-color: #0b0b0b;
 }
