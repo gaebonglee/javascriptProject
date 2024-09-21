@@ -3,15 +3,34 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const dpr = window.devicePixelRatio;
 
-const canvasWidth = innerWidth;
-const canvasHeight = innerHeight;
+let canvasWidth;
+let canvasHeight;
+let particles;
 
-canvas.style.width = canvasWidth + "px";
-canvas.style.height = canvasHeight + "px";
+function init() {
+  canvasWidth = innerWidth;
+  canvasHeight = innerHeight;
 
-canvas.width = canvasWidth * dpr;
-canvas.height = canvasHeight * dpr;
-ctx.scale(dpr, dpr);
+  canvas.style.width = canvasWidth + "px";
+  canvas.style.height = canvasHeight + "px";
+
+  canvas.width = canvasWidth * dpr;
+  canvas.height = canvasHeight * dpr;
+  ctx.scale(dpr, dpr);
+
+  particles = [];
+  const TOTAL = canvasWidth / 15;
+
+  for (let i = 0; i < TOTAL; i++) {
+    const x = randomNumBetween(0, canvasWidth);
+    const y = randomNumBetween(0, canvasHeight);
+    const radius = randomNumBetween(50, 100);
+    const vy = randomNumBetween(1, 5);
+    const particle = new Particle(x, y, radius, vy);
+    particles.push(particle);
+  }
+}
+
 const feGaussianBlur = document.querySelector("feGaussianBlur");
 const feColorMatrix = document.querySelector("feColorMatrix");
 
@@ -25,7 +44,7 @@ const controls = new (function () {
 let gui = new dat.GUI();
 
 const f1 = gui.addFolder("Gooey Effect");
-f1.open()
+f1.open();
 f1.add(controls, "blurValue", 0, 100).onChange((value) => {
   feGaussianBlur.setAttribute("stdDeviation", value);
 });
@@ -43,13 +62,11 @@ f1.add(controls, "alphaOffset", -40, 40).onChange((value) => {
   );
 });
 
-const f2 = gui.addFolder("Particle Property")
-f2.open()
+const f2 = gui.addFolder("Particle Property");
+f2.open();
 f2.add(controls, "acc", 1, 1.5, 0.01).onChange((value) => {
   particles.forEach((particle) => (particle.acc = value));
 });
-
-
 
 class Particle {
   constructor(x, y, radius, vy) {
@@ -74,21 +91,9 @@ class Particle {
   }
 }
 
-const TOTAL = 20;
 const randomNumBetween = (min, max) => {
   return Math.random() * (max - min + 1) + min;
 };
-
-let particles = [];
-
-for (let i = 0; i < TOTAL; i++) {
-  const x = randomNumBetween(0, canvasWidth);
-  const y = randomNumBetween(0, canvasHeight);
-  const radius = randomNumBetween(50, 100);
-  const vy = randomNumBetween(1, 5);
-  const particle = new Particle(x, y, radius, vy);
-  particles.push(particle);
-}
 
 console.log(particles);
 
@@ -119,4 +124,11 @@ function animate() {
   then = now - (delta % interval);
 }
 
-animate();
+window.addEventListener("load", () => {
+  init();
+  animate();
+});
+
+window.addEventListener("resize", () => {
+  init();
+});
