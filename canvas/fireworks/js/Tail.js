@@ -6,7 +6,7 @@ export default class Tail extends CanvasOption {
     this.x = x;
     this.y = this.canvasHeight;
     this.vy = vy;
-    this.color = "255, 255, 255";
+    this.color = color;
     this.friction = 0.985;
     // this.radius = 5;
     // this.opacity = 1;
