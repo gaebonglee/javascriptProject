@@ -76,7 +76,7 @@ class Canvas extends CanvasOption {
         particle.draw();
 
         if (Math.random() < 0.1) {
-          this.sparks.push(new Spark(particle.x, particle.y));
+          this.sparks.push(new Spark(particle.x, particle.y, 0.3));
         }
 
         if (particle.opacity < 0) this.particles.splice(index, 1);
@@ -85,6 +85,8 @@ class Canvas extends CanvasOption {
       this.sparks.forEach((spark, index) => {
         spark.update();
         spark.draw();
+
+        if (spark.opacity < 0) this.sparks.splice(index, 1);
       });
       then = now - (delta % this.interval);
     };
