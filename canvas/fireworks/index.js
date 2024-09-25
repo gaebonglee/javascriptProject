@@ -60,6 +60,9 @@ class Canvas extends CanvasOption {
       this.ctx.fillStyle = this.bgColor + "25"; //#00000010
       this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
+      this.ctx.fillStyle = `rgba(255, 255, 255,${this.particles.length / 50000})`;
+      this.ctx.fillRect (0, 0, this.canvasWidth, this.canvasHeight);
+
       if (Math.random() < 0.03) this.createTail();
 
       this.tails.forEach((tail, index) => {
