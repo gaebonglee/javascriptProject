@@ -5,20 +5,21 @@ export default class Spark extends CanvasOption {
     super();
     this.x = x;
     this.y = y;
-    this.vx = vx;
-    this.vy = vy;
-    this.opacity = opacity;
-    this.colorDeg = colorDeg
+    // this.vx = vx;
+    // this.vy = vy;
+    // this.opacity = opacity;
+    // this.colorDeg = colorDeg
   }
   update() {
-    this.opacity -= 0.01;
-    this.x += this.vx;
-    this.y += this.vy;
+    // this.opacity -= 0.01;
+    // this.x += this.vx;
+    // this.y += this.vy;
   }
   draw() {
     this.ctx.beginPath();
     this.ctx.arc(this.x, this.y, 1, 0, Math.PI * 2);
-    this.ctx.fillStyle = `hsla(${this.colorDeg}, 100%, 65%, ${this.opaciy})`;
+    this.ctx.fillStyle = "gold";
+    // this.ctx.fillStyle = `hsla(${this.colorDeg}, 100%, 65%, ${this.opaciy})`;
     this.ctx.fill();
     this.ctx.closePath();
   }

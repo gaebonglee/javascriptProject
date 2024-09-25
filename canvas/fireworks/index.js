@@ -2,6 +2,7 @@ import CanvasOption from "./js/CanvasOption.js";
 import Particle from "./js/Particle.js";
 import Tail from "./js/Tail.js";
 import { hyptenuse, randomNumBetween } from "./js/Utils.js";
+import Spark from "./js/Spark.js";
 
 class Canvas extends CanvasOption {
   constructor() {
@@ -9,6 +10,7 @@ class Canvas extends CanvasOption {
 
     this.tails = [];
     this.particles = [];
+    this.sparks = [];
   }
   init() {
     this.canvasWidth = innerWidth;
@@ -73,9 +75,17 @@ class Canvas extends CanvasOption {
         particle.update();
         particle.draw();
 
+        if (Math.random() < 0.1) {
+          this.sparks.push(new Spark(particle.x, particle.y));
+        }
+
         if (particle.opacity < 0) this.particles.splice(index, 1);
       });
 
+      this.sparks.forEach((spark, index) => {
+        spark.update();
+        spark.draw();
+      });
       then = now - (delta % this.interval);
     };
     requestAnimationFrame(frame);
