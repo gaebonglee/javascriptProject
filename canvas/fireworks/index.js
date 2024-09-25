@@ -1,11 +1,13 @@
 import CanvasOption from "./js/CanvasOption.js";
 import Particle from "./js/Particle.js";
-import { randomNumBetween } from "./js/Utils.js";
+import Tail from "./js/Tail.js";
+import { hyptenuse, randomNumBetween } from "./js/Utils.js";
 
 class Canvas extends CanvasOption {
   constructor() {
     super();
 
+    this.tails = [];
     this.particles = [];
   }
   init() {
@@ -22,17 +24,28 @@ class Canvas extends CanvasOption {
     this.createParticles();
   }
 
+  createTail() {
+    const x = randomNumBetween(this.canvasWidth * 0.2, this.canvasWidth * 0.8);
+    const vy = -20;
+    const color = "white";
+    // const vy = this.canvasHeight * randomNumBetween(0.01, 0.015) * -1;
+    this.tails.push(new Tail(x, vy, color));
+  }
+
   createParticles() {
     const PARTICLE_NUM = 400;
     const x = randomNumBetween(0, this.canvasWidth);
     const y = randomNumBetween(0, this.canvasHeight);
     for (let i = 0; i < PARTICLE_NUM; i++) {
-      const r = randomNumBetween(0, 3);
+      const r =
+        randomNumBetween(2, 100) * hyptenuse(innerWidth, innerHeight) * 0.0001;
       const angle = (Math.PI / 180) * randomNumBetween(0, 360);
 
       const vx = r * Math.cos(angle);
-      const vy =  r * Math.sin(angle);
-      this.particles.push(new Particle(x, y, vx, vy));
+      const vy = r * Math.sin(angle);
+      const opacity = randomNumBetween(0.6, 0.9);
+
+      this.particles.push(new Particle(x, y, vx, vy, opacity));
     }
   }
   render() {
@@ -44,14 +57,21 @@ class Canvas extends CanvasOption {
       now = Date.now();
       delta = now - then;
       if (delta < this.interval) return;
-      this.ctx.fillStyle = this.bgColor;
+      this.ctx.fillStyle = this.bgColor + "40"; //#00000010
       this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-      this.particles.forEach((particle) => {
+      this.createTail();
+
+      this.tails.forEach((tail, index) => {
+        tail.update();
+        tail.draw();
+      });
+
+      this.particles.forEach((particle, index) => {
         particle.update();
         particle.draw();
 
-        if (particle.opacity < 0) this.particles.splice(index, 0);
+        if (particle.opacity < 0) this.particles.splice(index, 1);
       });
 
       then = now - (delta % this.interval);
