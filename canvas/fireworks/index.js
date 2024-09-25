@@ -34,7 +34,7 @@ class Canvas extends CanvasOption {
   }
 
   createParticles(x, y, color) {
-    const PARTICLE_NUM = 400;
+    const PARTICLE_NUM = 100;
     for (let i = 0; i < PARTICLE_NUM; i++) {
       const r =
         randomNumBetween(2, 100) * hyptenuse(innerWidth, innerHeight) * 0.0001;
@@ -56,7 +56,7 @@ class Canvas extends CanvasOption {
       now = Date.now();
       delta = now - then;
       if (delta < this.interval) return;
-      this.ctx.fillStyle = this.bgColor + "40"; //#00000010
+      this.ctx.fillStyle = this.bgColor + "25"; //#00000010
       this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
       if (Math.random() < 0.03) this.createTail();
@@ -76,7 +76,7 @@ class Canvas extends CanvasOption {
         particle.draw();
 
         if (Math.random() < 0.1) {
-          this.sparks.push(new Spark(particle.x, particle.y, 0.3));
+          this.sparks.push(new Spark(particle.x, particle.y, 1));
         }
 
         if (particle.opacity < 0) this.particles.splice(index, 1);
