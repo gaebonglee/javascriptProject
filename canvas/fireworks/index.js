@@ -3,9 +3,9 @@ import Particle from "./js/Particle.js";
 import Spark from "./js/Spark.js";
 import Tail from "./js/Tail.js";
 import {
-  // randomFloatBetween,
   randomIntBetween,
   randomNumBetween,
+  // randomFloatBetween,
 } from "./js/utils.js";
 
 class Canvas extends CanvasOption {
