@@ -64,6 +64,11 @@ class Canvas extends CanvasOption {
       this.tails.forEach((tail, index) => {
         tail.update();
         tail.draw();
+
+        if (tail.vy > -1) {
+          this.tails.splice(index, 1);
+          this.createParticles();
+        }
       });
 
       this.particles.forEach((particle, index) => {
