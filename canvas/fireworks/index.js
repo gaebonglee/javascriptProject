@@ -63,7 +63,7 @@ class Canvas extends CanvasOption {
         tail.update();
         tail.draw();
 
-        if (tail.vy > -1) {
+        if (tail.vy > -0.7) {
           this.tails.splice(index, 1);
           this.createParticles(tail.x, tail.y, tail.color);
         }
