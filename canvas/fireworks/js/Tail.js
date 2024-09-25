@@ -2,12 +2,12 @@ import CanvasOption from "./CanvasOption.js";
 import { randomNumBetween } from "./Utils.js";
 
 export default class Tail extends CanvasOption {
-  constructor(x, vy, color) {
+  constructor(x, vy, colorDeg) {
     super();
     this.x = x;
     this.y = this.canvasHeight;
     this.vy = vy;
-    this.color = color;
+    this.colorDeg = colorDeg;
     this.friction = 0.985;
     // this.radius = 5;
     // this.opacity = 1;
@@ -24,9 +24,9 @@ export default class Tail extends CanvasOption {
   }
 
   draw() {
-    this.ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+    this.ctx.fillStyle = `hsla(${this.colorDeg}, 100%, 65%, ${this.opacity})`;
     this.ctx.beginPath();
-    this.ctx.arc(this.x, this.y, 1, 0, Math.PI * 2);
+    this.ctx.arc(this.x, this.y, 1.7, 0, Math.PI * 2);
     this.ctx.fill();
     this.ctx.closePath();
   }

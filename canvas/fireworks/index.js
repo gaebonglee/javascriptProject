@@ -29,12 +29,12 @@ class Canvas extends CanvasOption {
   createTail() {
     const x = randomNumBetween(this.canvasWidth * 0.2, this.canvasWidth * 0.8);
     const vy = this.canvasHeight * randomNumBetween(0.01, 0.015) * -1;
-    const color = "255,255,255";
-    this.tails.push(new Tail(x, vy, color));
+    const colorDeg = randomNumBetween(0, 360);
+    this.tails.push(new Tail(x, vy, colorDeg));
   }
 
-  createParticles(x, y, color) {
-    const PARTICLE_NUM = 100;
+  createParticles(x, y, colorDeg) {
+    const PARTICLE_NUM = 400;
     for (let i = 0; i < PARTICLE_NUM; i++) {
       const r =
         randomNumBetween(2, 100) * hyptenuse(innerWidth, innerHeight) * 0.0001;
@@ -43,8 +43,9 @@ class Canvas extends CanvasOption {
       const vx = r * Math.cos(angle);
       const vy = r * Math.sin(angle);
       const opacity = randomNumBetween(0.6, 0.9);
+      const _colorDeg = randomNumBetween(-20, 20) + colorDeg;
 
-      this.particles.push(new Particle(x, y, vx, vy, opacity, color));
+      this.particles.push(new Particle(x, y, vx, vy, opacity, _colorDeg));
     }
   }
   render() {
@@ -67,7 +68,7 @@ class Canvas extends CanvasOption {
 
         if (tail.vy > -0.7) {
           this.tails.splice(index, 1);
-          this.createParticles(tail.x, tail.y, tail.color);
+          this.createParticles(tail.x, tail.y, tail.colorDeg);
         }
       });
 
