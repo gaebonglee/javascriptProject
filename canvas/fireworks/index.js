@@ -3,7 +3,7 @@ import Particle from "./js/Particle.js";
 import Spark from "./js/Spark.js";
 import Tail from "./js/Tail.js";
 import {
-  randomFloatBetween,
+  // randomFloatBetween,
   randomIntBetween,
   randomNumBetween,
 } from "./js/utils.js";
