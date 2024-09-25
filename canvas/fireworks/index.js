@@ -26,9 +26,8 @@ class Canvas extends CanvasOption {
 
   createTail() {
     const x = randomNumBetween(this.canvasWidth * 0.2, this.canvasWidth * 0.8);
-    const vy = -20;
+    const vy = this.canvasHeight * randomNumBetween(0.01, 0.015) * -1;
     const color = "white";
-    // const vy = this.canvasHeight * randomNumBetween(0.01, 0.015) * -1;
     this.tails.push(new Tail(x, vy, color));
   }
 
@@ -60,7 +59,7 @@ class Canvas extends CanvasOption {
       this.ctx.fillStyle = this.bgColor + "40"; //#00000010
       this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-      this.createTail();
+      if (Math.random() < 0.03) this.createTail();
 
       this.tails.forEach((tail, index) => {
         tail.update();
