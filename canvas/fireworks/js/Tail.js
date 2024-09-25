@@ -1,4 +1,5 @@
 import CanvasOption from "./CanvasOption.js";
+import { randomNumBetween } from "./Utils.js";
 
 export default class Tail extends CanvasOption {
   constructor(x, vy, color) {
@@ -10,14 +11,16 @@ export default class Tail extends CanvasOption {
     this.friction = 0.985;
     // this.radius = 5;
     // this.opacity = 1;
-    this.angle = 0;
+    this.angle = randomNumBetween(0, 2);
   }
   update() {
     this.vy *= this.friction;
-    this.angle += 1;
     this.y += this.vy;
-    this.opacity = -this.vy * 0.15;
+
+    this.angle += 1;
     this.x += Math.cos(this.angle) * this.vy * 0.2;
+
+    this.opacity = -this.vy * 0.15;
   }
 
   draw() {
